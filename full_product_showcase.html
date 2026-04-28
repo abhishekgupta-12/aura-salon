@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-bright": "#f8faf9",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed": "#261900",
+                "surface-main": "#FFFFFF",
+                "surface-container-highest": "#e1e3e2",
+                "outline-variant": "#bfc8c8",
+                "outline": "#707978",
+                "on-tertiary-fixed-variant": "#683c22",
+                "surface-variant": "#e1e3e2",
+                "on-tertiary-fixed": "#331200",
+                "text-primary": "#111827",
+                "surface-container-high": "#e7e8e8",
+                "on-error-container": "#93000a",
+                "tertiary-container": "#663a21",
+                "tertiary": "#4b240d",
+                "on-primary-fixed": "#002020",
+                "surface-container-low": "#f2f4f3",
+                "secondary-container": "#fed488",
+                "on-surface": "#191c1c",
+                "secondary-fixed-dim": "#e9c176",
+                "primary-container": "#0d4d4d",
+                "tertiary-fixed": "#ffdbca",
+                "inverse-on-surface": "#f0f1f0",
+                "surface-tint": "#2e6767",
+                "primary": "#003535",
+                "surface-container": "#edeeed",
+                "error-container": "#ffdad6",
+                "background": "#f8faf9",
+                "on-surface-variant": "#404848",
+                "surface-dim": "#d9dad9",
+                "on-background": "#191c1c",
+                "primary-fixed": "#b4edec",
+                "warning": "#F59E0B",
+                "secondary": "#775a19",
+                "success": "#10B981",
+                "primary-fixed-dim": "#98d1d0",
+                "surface-muted": "#F9FAFB",
+                "on-secondary-fixed-variant": "#5d4201",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-container": "#785a1a",
+                "on-secondary": "#ffffff",
+                "inverse-surface": "#2e3131",
+                "border-subtle": "#E5E7EB",
+                "on-tertiary-container": "#e3a585",
+                "on-error": "#ffffff",
+                "inverse-primary": "#98d1d0",
+                "on-primary-fixed-variant": "#104f4f",
+                "error": "#EF4444",
+                "secondary-fixed": "#ffdea5",
+                "text-secondary": "#4B5563",
+                "on-primary": "#ffffff",
+                "surface": "#f8faf9",
+                "tertiary-fixed-dim": "#f9b897",
+                "on-primary-container": "#85bdbc"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "base": "8px",
+                "stack-sm": "8px",
+                "gutter": "16px",
+                "stack-xs": "4px",
+                "container-margin": "24px",
+                "sidebar-width": "260px",
+                "stack-md": "16px",
+                "stack-lg": "24px"
+            },
+            "fontFamily": {
+                "display-xl": ["Manrope"],
+                "body-md": ["Inter"],
+                "h2": ["Manrope"],
+                "label-md": ["Inter"],
+                "body-sm": ["Inter"],
+                "h3": ["Manrope"],
+                "h1": ["Manrope"],
+                "label-sm": ["Inter"],
+                "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                "display-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "h2": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shadow {
+            box-shadow: 0px 4px 12px rgba(13, 77, 77, 0.05);
+        }
+        .modal-shadow {
+            box-shadow: 0px 10px 25px rgba(13, 77, 77, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-surface-bright font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-[0px_4px_12px_rgba(13,77,77,0.05)] font-manrope antialiased tracking-tight">
+<nav class="flex justify-between items-center px-10 py-5 max-w-[1440px] mx-auto">
+<div class="text-xl font-bold tracking-[0.1em] text-teal-900 uppercase">AURA SALON</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-teal-900 font-semibold border-b-2 border-teal-900 pb-1 cursor-pointer active:scale-95 duration-200 transition-opacity" href="#dashboard">Dashboard</a>
+<a class="text-gray-500 font-medium hover:text-teal-800 transition-colors cursor-pointer active:scale-95 duration-200 transition-opacity" href="#appointments">Appointments</a>
+<a class="text-gray-500 font-medium hover:text-teal-800 transition-colors cursor-pointer active:scale-95 duration-200 transition-opacity" href="#billing">Billing</a>
+<a class="text-gray-500 font-medium hover:text-teal-800 transition-colors cursor-pointer active:scale-95 duration-200 transition-opacity" href="#staff">Staff</a>
+<a class="text-gray-500 font-medium hover:text-teal-800 transition-colors cursor-pointer active:scale-95 duration-200 transition-opacity" href="#inventory">Inventory</a>
+<a class="text-gray-500 font-medium hover:text-teal-800 transition-colors cursor-pointer active:scale-95 duration-200 transition-opacity" href="#marketing">Marketing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-teal-900 font-medium hover:opacity-80 transition-opacity px-4 py-2">Log In</button>
+<button class="bg-primary-container text-white px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-all active:scale-95">Get Started</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- 1. Hero Section -->
+<section class="relative min-h-[921px] flex items-center justify-center overflow-hidden bg-surface-main px-6">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-fixed/20 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary-fixed/20 blur-[120px] rounded-full"></div>
+</div>
+<div class="relative z-10 max-w-5xl text-center">
+<span class="inline-block py-1 px-3 mb-6 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-label-sm uppercase tracking-wider">The Future of Beauty Management</span>
+<h1 class="font-display-xl text-[64px] leading-[1.1] text-primary mb-6">Elevate your salon with <span class="text-surface-tint">Aura OS</span>.</h1>
+<p class="text-body-lg text-text-secondary mb-10 max-w-2xl mx-auto">A professional-grade operating system designed for the high-end beauty industry. Precision scheduling, seamless payments, and luxury-first client experiences.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary px-8 py-4 text-white rounded-xl font-semibold text-lg hover:opacity-95 transition-all shadow-lg active:scale-95">Book a Live Demo</button>
+<button class="border border-outline px-8 py-4 text-primary rounded-xl font-semibold text-lg hover:bg-surface-container-low transition-all active:scale-95">Explore Modules</button>
+</div>
+<div class="mt-20 relative">
+<img class="rounded-2xl shadow-2xl border border-white/20 w-full max-w-4xl mx-auto object-cover h-[400px]" data-alt="high-end minimalist salon interior with marble surfaces, gold accents, and warm ambient lighting in a professional editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABAGODS85u3XA0asKfDcc-YVKup9f6n99WHLKHd_-xSQHkZdmgJIZMIvCZsT5HZNLFpkHq9AGSaANMYT8uG4y--nq-_MyZ6CLwvEDup7nre5ncAQ_JmPJiuW2a05ygu5c3rxbkhabR87In_ZtlFiXJ_L-J9IS7lUOZKaUWhjBVDA7nwYD2VElgEGRcVvijagZ90yPhyXWCPiECHcCD5W2fPr7pZ0J4BIhuOJrh_5iuF0b3xsOhkHEtJ5f9eHnZOUzeJGDB-UI-aYzW"/>
+<div class="absolute -bottom-10 -right-10 hidden lg:block bg-surface-main p-6 rounded-2xl tonal-shadow border border-border-subtle max-w-[280px]">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-success">check_circle</span>
+<span class="font-label-md">Real-time Sync Active</span>
+</div>
+<p class="text-body-sm text-text-secondary">Your salon is performing at 98% efficiency today.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. The Dashboard Section -->
+<section class="py-24 bg-surface-muted px-10" id="dashboard">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div class="max-w-xl">
+<h2 class="font-h1 text-primary mb-4">Command Center</h2>
+<p class="text-body-md text-text-secondary">A visual intelligence hub for your salon's daily performance, revenue trends, and operational health.</p>
+</div>
+<button class="flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
+                        View Analytics <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6 h-[600px]">
+<div class="col-span-12 lg:col-span-8 bg-surface-main p-8 rounded-2xl tonal-shadow border border-border-subtle flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="font-h3 text-primary">Revenue Overview</h3>
+<p class="text-label-sm text-text-secondary">Last 30 days performance</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container rounded-lg text-label-sm">Daily</span>
+<span class="px-3 py-1 bg-primary text-white rounded-lg text-label-sm">Weekly</span>
+</div>
+</div>
+<div class="flex-grow relative flex items-end gap-2">
+<!-- Visual placeholder for a chart -->
+<div class="flex-grow flex items-end justify-between px-4 h-full pb-8">
+<div class="w-12 bg-primary-container/20 rounded-t-lg h-[40%]"></div>
+<div class="w-12 bg-primary-container/20 rounded-t-lg h-[60%]"></div>
+<div class="w-12 bg-primary-container/20 rounded-t-lg h-[55%]"></div>
+<div class="w-12 bg-primary-container/20 rounded-t-lg h-[80%]"></div>
+<div class="w-12 bg-primary-container rounded-t-lg h-[95%]"></div>
+<div class="w-12 bg-primary-container/20 rounded-t-lg h-[70%]"></div>
+<div class="w-12 bg-primary-container/20 rounded-t-lg h-[75%]"></div>
+</div>
+<div class="absolute top-0 right-0 text-right">
+<span class="block text-[32px] font-bold text-primary">$42,850.00</span>
+<span class="text-success text-label-md flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12.5%
+                                </span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 grid grid-rows-2 gap-6">
+<div class="bg-surface-main p-6 rounded-2xl tonal-shadow border border-border-subtle">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">group</span>
+</div>
+<div>
+<p class="text-label-sm text-text-secondary uppercase tracking-wider">New Clients</p>
+<p class="text-h3 font-bold text-primary">124</p>
+</div>
+</div>
+<p class="text-body-sm text-text-secondary">82% conversion rate from social booking links.</p>
+</div>
+<div class="bg-primary text-white p-6 rounded-2xl tonal-shadow border border-primary-container overflow-hidden relative">
+<div class="relative z-10">
+<p class="text-label-sm opacity-70 uppercase tracking-wider mb-2">Upcoming Appointments</p>
+<p class="text-[40px] font-bold leading-tight">18</p>
+<p class="text-body-sm opacity-90 mt-2">Next appointment at 2:00 PM: <br/>Balayage with Elena R.</p>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-white/10 text-[120px]">calendar_today</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Appointment Management -->
+<section class="py-24 bg-surface-main px-10" id="appointments">
+<div class="max-w-[1440px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<!-- High Fidelity Calendar Preview -->
+<div class="bg-surface-main rounded-2xl modal-shadow border border-border-subtle p-6 overflow-hidden">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4">
+<h3 class="font-h3">April 2024</h3>
+<div class="flex border border-border-subtle rounded-lg">
+<button class="p-1 px-2 border-r border-border-subtle"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 px-2"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 bg-primary text-white text-label-sm rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span> New Booking
+                                </button>
+</div>
+</div>
+<div class="grid grid-cols-5 gap-4">
+<!-- Calendar Columns (Stylized) -->
+<div class="space-y-4">
+<span class="block text-center text-label-sm text-text-secondary">Mon 15</span>
+<div class="h-24 bg-surface-container-low rounded-xl border-l-4 border-primary p-3">
+<p class="text-label-sm font-bold">Cut &amp; Blow</p>
+<p class="text-[10px] text-text-secondary">10:00 - 11:30</p>
+</div>
+<div class="h-16 bg-surface-container-low rounded-xl border-l-4 border-secondary p-3">
+<p class="text-label-sm font-bold">Consultation</p>
+</div>
+</div>
+<div class="space-y-4">
+<span class="block text-center text-label-sm text-primary font-bold">Tue 16</span>
+<div class="h-32 bg-primary-container text-white rounded-xl p-3">
+<p class="text-label-sm font-bold">Full Highlights</p>
+<p class="text-[10px] opacity-80">11:00 - 1:30</p>
+</div>
+</div>
+<div class="space-y-4">
+<span class="block text-center text-label-sm text-text-secondary">Wed 17</span>
+<div class="h-16 border-2 border-dashed border-border-subtle rounded-xl"></div>
+<div class="h-24 bg-surface-container-low rounded-xl border-l-4 border-primary p-3">
+<p class="text-label-sm font-bold">Beard Trim</p>
+</div>
+</div>
+<div class="space-y-4">
+<span class="block text-center text-label-sm text-text-secondary">Thu 18</span>
+<div class="h-40 bg-surface-container-low rounded-xl border-l-4 border-tertiary p-3">
+<p class="text-label-sm font-bold">Extension Fitting</p>
+</div>
+</div>
+<div class="space-y-4">
+<span class="block text-center text-label-sm text-text-secondary">Fri 19</span>
+<div class="h-24 bg-secondary-container rounded-xl p-3">
+<p class="text-label-sm font-bold text-on-secondary-container">Wedding Trial</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Overlapping Detail Card -->
+<div class="absolute -bottom-10 -left-10 bg-surface-main p-5 rounded-xl modal-shadow border border-border-subtle w-64 hidden xl:block">
+<div class="flex items-center gap-3 mb-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="professional portrait of a smiling woman with stylish hair for a client profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD76xi3nYW3XKB3fOjYobEKY_VWi4w4lbw9jbJtEAb_r1-32tZBVCYI7mPKXyalmUWm4WfMbUlziPpBVbNYx7w9m2rBQQoNyaD3uvE42s6wqNAPf-y73W2tsZixd2JTKIN5J2KhF2qQzQEie1mfyoIVcoQPB1DKsssC0wmW1ujD0gfFvD6AQlz83pKU2sE3zAEHS6IirVOA9IUjcKCew5WZsI7YUbhv5JRz7-3HZvZ4tCMU1nRK5rx9A6hbNQ3kiHwlHDWTXEhiCbVg"/>
+<div>
+<p class="text-label-md font-bold">Sarah Jenkins</p>
+<p class="text-[10px] text-text-secondary">VIP Gold Member</p>
+</div>
+</div>
+<p class="text-label-sm text-text-secondary mb-2">Preferred Stylist: Marcus</p>
+<div class="flex gap-1">
+<span class="w-full py-1 text-center bg-success/10 text-success text-[10px] rounded uppercase font-bold">Confirmed</span>
+</div>
+</div>
+</div>
+<div>
+<h2 class="font-h1 text-primary mb-6">Masterful Scheduling</h2>
+<p class="text-body-lg text-text-secondary mb-8 leading-relaxed">Say goodbye to double bookings and gaps. Our intuitive drag-and-drop calendar manages complex appointments, processing time, and room availability with surgical precision.</p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<div>
+<p class="font-bold">Smart Resource Allocation</p>
+<p class="text-body-sm text-text-secondary">Automatically tracks equipment and room usage across bookings.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<div>
+<p class="font-bold">Waitlist Automation</p>
+<p class="text-body-sm text-text-secondary">Fills cancellations instantly with automated text notifications.</p>
+</div>
+</li>
+</ul>
+<button class="bg-primary text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition-all">Explore Booking Flow</button>
+</div>
+</div>
+</section>
+<!-- 4. Billing & POS -->
+<section class="py-24 bg-surface-muted px-10" id="billing">
+<div class="max-w-[1440px] mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-h1 text-primary">Luxury Checkout Experience</h2>
+<p class="text-body-md text-text-secondary mt-2">Frictionless payments that match the elegance of your salon.</p>
+</div>
+<div class="bg-surface-main rounded-3xl tonal-shadow border border-border-subtle overflow-hidden flex flex-col md:flex-row h-[500px]">
+<div class="flex-grow p-10 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 text-text-secondary mb-8">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-md">Current Invoice #8842</span>
+</div>
+<div class="space-y-6">
+<div class="flex justify-between items-center pb-4 border-b border-border-subtle">
+<div>
+<p class="font-bold">Dimensional Color Treatment</p>
+<p class="text-label-sm text-text-secondary">Stylist: Elena R.</p>
+</div>
+<span class="font-bold">$210.00</span>
+</div>
+<div class="flex justify-between items-center pb-4 border-b border-border-subtle">
+<div>
+<p class="font-bold">Oribe Gold Lust Conditioner</p>
+<p class="text-label-sm text-text-secondary">Retail Product</p>
+</div>
+<span class="font-bold">$52.00</span>
+</div>
+</div>
+</div>
+<div class="pt-6">
+<div class="flex justify-between items-center mb-6">
+<span class="text-h3 font-bold">Total Due</span>
+<span class="text-h3 font-bold text-primary">$262.00</span>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<button class="flex flex-col items-center gap-2 p-4 rounded-xl border border-border-subtle hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+<span class="text-label-sm">Card</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-xl bg-primary text-white transition-all">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-label-sm">Digital</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-xl border border-border-subtle hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-primary">wallet</span>
+<span class="text-label-sm">Point-Pay</span>
+</button>
+</div>
+</div>
+</div>
+<div class="w-full md:w-[400px] bg-primary p-10 text-white flex flex-col justify-center">
+<div class="mb-10 text-center">
+<div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-[40px] text-primary-fixed">contactless</span>
+</div>
+<h3 class="text-h3 mb-2">Ready for Payment</h3>
+<p class="text-body-sm opacity-70">Client: Julianne Moore</p>
+</div>
+<div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+<p class="text-label-sm uppercase tracking-widest opacity-60 mb-4">Loyalty Balance</p>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-h2 font-bold">2,450</p>
+<p class="text-[10px] opacity-70">Redeemable for $24.50</p>
+</div>
+<button class="text-label-sm font-bold text-secondary-fixed underline">Apply Points</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Staff & Team Management -->
+<section class="py-24 bg-surface-main px-10" id="staff">
+<div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-20 items-center">
+<div class="w-full lg:w-1/2 order-2 lg:order-1">
+<h2 class="font-h1 text-primary mb-6">Empower Your Artistry Team</h2>
+<p class="text-body-lg text-text-secondary mb-8">Manage schedules, track commissions, and monitor performance with a dedicated team portal that rewards excellence.</p>
+<div class="space-y-6">
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-muted border border-border-subtle">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="professional portrait of a male salon professional with a confident look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9SG5LUIZJQVajU1OCWR3aG2Rr38DR1pYu1BU1gwFI4rhxX2FByv74owlk3dAVxhlyF606BZMq5x2rEt3_RHMld8g-6yvjS9bH_PpkxsTlfrdKWULjV7oyBEJPtAHV0sAqlnoyDkwrvkznTrMKsCmGGDkmISpdY8mY_ksdTAZvchGEQYANTfh0YXrZ-kDsVq3Ti8WmV5srDUj2IqM_2pLRB5re-aAIVBPpf7SMgcDloVIISlX8HEKv4pxMJfxMQzM4L5iZk2_DEcuD"/>
+<div class="flex-grow">
+<p class="font-bold">Marcus Thorne</p>
+<p class="text-label-sm text-text-secondary">Senior Stylist</p>
+</div>
+<div class="text-right">
+<p class="text-label-sm font-bold text-success">$8,400 Sales</p>
+<div class="w-24 h-1.5 bg-surface-container rounded-full mt-1 overflow-hidden">
+<div class="bg-success h-full w-[85%]"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-muted border border-border-subtle">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="professional portrait of a creative female stylist with artistic flair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzh_Xn42CmbrgOf2fjUttcZhybdIbbp8IVx8sguFiRLFXFFP7cKbAP2vBW4NQbNGfRRlUbjHr5RTbvur0AL1D_frdfCuqGhDl8SOGA2ur98b_aw4AJqm5mMYtnYffXgD3A-mfiWhsA5FQ6xyjIW6HhbXhRcYd3X7ljpNIrwaQ5Jmg9H1Tm9GPDB-QxasXEORG1NZ9tAKsb3tQnVX0LTPR63Hnnyk-nAF6ppfz4BYUdd_n7675JTx9UNnsvvftAj2p3hbn14Y5gnl0x"/>
+<div class="flex-grow">
+<p class="font-bold">Elena Rodriguez</p>
+<p class="text-label-sm text-text-secondary">Color Specialist</p>
+</div>
+<div class="text-right">
+<p class="text-label-sm font-bold text-primary">$12,100 Sales</p>
+<div class="w-24 h-1.5 bg-surface-container rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-[95%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/2 order-1 lg:order-2 grid grid-cols-2 gap-4">
+<img class="w-full h-80 rounded-2xl object-cover" data-alt="a professional stylist carefully working on hair in a high-end salon setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5iC53gqlHuES1MGx4Rw5MIWbGShHlRUGXXSMuZj0sSzKDI40mbHYFp_yXk2ARIBFp01gXKqibmKkylFKJcE7puKHie-WKHZdZglZQUi2b4Fl_xw5BzmjqoO1AKmaFOaMXV1U2c_ork0LydOzqLIEnu6A7DMMiq122_QT7aOrqTN97wpLF2BAnl6Le_iMtc4JicYLFKzUn0FzJNbbKluxxWtbP1TV96rGUck2rUyYH50OYdxG2INwYUpnIbDAfdenZb9mbq0Mc41kC"/>
+<div class="space-y-4">
+<div class="h-44 bg-secondary-container rounded-2xl p-6 flex flex-col justify-end">
+<p class="text-h3 font-bold text-on-secondary-container">98%</p>
+<p class="text-label-sm text-on-secondary-container/80 uppercase tracking-wider">Client Retention</p>
+</div>
+<img class="w-full h-[148px] rounded-2xl object-cover" data-alt="modern salon equipment and tools arranged neatly on a designer trolley" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHbb0O73oE8bBFEd1kBfT0Y8ta-xWXMoBk1NghggBWD4t5wajQ8aLdVpJo-h9kms4C31s46APeHOwz3nrE8QxtPgW_9pLWh4SdOs3pSX-FXaQaMSjK8KeGMIUYfZ1DLWxu-JYzu8MBTFEOXDgbOI4vos48FSO4QQH1rlbcJD3KEtph5ww9twkzc7K_sbp-wC1O95US1-YFxOuezQRXWaYWngPj-Ipl8MNt4I3J5GPjQA377dBmP5vFNryrZgyL-oJRZEpV2CqHVhaX"/>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Inventory Control -->
+<section class="py-24 bg-surface-muted px-10" id="inventory">
+<div class="max-w-[1440px] mx-auto">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div class="bg-surface-main p-8 rounded-3xl modal-shadow border border-border-subtle">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-h3">Stock Intelligence</h3>
+<button class="text-primary text-label-md font-bold">Order Supplies</button>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">sanitizer</span>
+</div>
+<div>
+<p class="font-bold">Vivid Hair Serum</p>
+<p class="text-label-sm text-text-secondary">Retail Category</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold">42 Units</p>
+<span class="text-[10px] px-2 py-0.5 bg-success/10 text-success rounded-full font-bold uppercase">Optimal</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">palette</span>
+</div>
+<div>
+<p class="font-bold">Level 6G Permanent</p>
+<p class="text-label-sm text-text-secondary">Professional Color</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold">4 Units</p>
+<span class="text-[10px] px-2 py-0.5 bg-error/10 text-error rounded-full font-bold uppercase">Low Stock</span>
+</div>
+</div>
+<div class="pt-6 border-t border-border-subtle">
+<div class="flex items-center justify-between mb-4">
+<p class="text-label-md font-bold">Auto-Restock Forecast</p>
+<span class="text-label-sm text-text-secondary">Estimated Spend: $1,240</span>
+</div>
+<div class="w-full h-12 bg-primary-fixed/30 rounded-xl flex items-center px-4 gap-3">
+<span class="material-symbols-outlined text-on-primary-fixed-variant text-sm">info</span>
+<p class="text-[12px] text-on-primary-fixed-variant">3 items will reach critical levels within 48 hours.</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2 class="font-h1 text-primary mb-6">Zero-Loss Inventory</h2>
+<p class="text-body-lg text-text-secondary mb-10 leading-relaxed">Our system tracks every drop of color and every bottle on the shelf. Predictive ordering ensures you never run out of your best-sellers while minimizing dead stock.</p>
+<div class="grid grid-cols-2 gap-6">
+<div class="p-6 bg-surface-main rounded-2xl tonal-shadow border border-border-subtle">
+<span class="material-symbols-outlined text-primary mb-3">barcode_scanner</span>
+<p class="font-bold mb-1">Mobile Scanner</p>
+<p class="text-body-sm text-text-secondary">Full stock audits via your smartphone camera.</p>
+</div>
+<div class="p-6 bg-surface-main rounded-2xl tonal-shadow border border-border-subtle">
+<span class="material-symbols-outlined text-primary mb-3">analytics</span>
+<p class="font-bold mb-1">Usage Tracking</p>
+<p class="text-body-sm text-text-secondary">Link backbar usage directly to service profit margins.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Marketing Automation -->
+<section class="py-24 bg-surface-main px-10" id="marketing">
+<div class="max-w-[1440px] mx-auto text-center">
+<h2 class="font-h1 text-primary mb-4">Marketing That Thinks Ahead</h2>
+<p class="text-body-lg text-text-secondary mb-16 max-w-2xl mx-auto">Automate your outreach and build lasting loyalty with smart campaigns triggered by client behavior.</p>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="p-8 bg-surface-muted rounded-3xl border border-border-subtle text-left group hover:bg-primary hover:text-white transition-all duration-300">
+<div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-white">celebration</span>
+</div>
+<h3 class="text-h3 mb-4">Birthday Treats</h3>
+<p class="text-body-sm opacity-80 mb-8">Send personalized offers and gift vouchers automatically on client birthdays.</p>
+<div class="pt-6 border-t border-border-subtle group-hover:border-white/20">
+<span class="text-label-sm font-bold uppercase tracking-widest">Active Campaign</span>
+</div>
+</div>
+<div class="p-8 bg-surface-muted rounded-3xl border border-border-subtle text-left group hover:bg-primary hover:text-white transition-all duration-300">
+<div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-white">history</span>
+</div>
+<h3 class="text-h3 mb-4">Win-Back Emails</h3>
+<p class="text-body-sm opacity-80 mb-8">Reconnect with clients who haven't booked in over 6 weeks with a "We Miss You" gift.</p>
+<div class="pt-6 border-t border-border-subtle group-hover:border-white/20">
+<span class="text-label-sm font-bold uppercase tracking-widest">Running Auto</span>
+</div>
+</div>
+<div class="p-8 bg-surface-muted rounded-3xl border border-border-subtle text-left group hover:bg-primary hover:text-white transition-all duration-300">
+<div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-white">workspace_premium</span>
+</div>
+<h3 class="text-h3 mb-4">Tiered Loyalty</h3>
+<p class="text-body-sm opacity-80 mb-8">Create elite membership tiers with exclusive perks based on annual spending.</p>
+<div class="pt-6 border-t border-border-subtle group-hover:border-white/20">
+<span class="text-label-sm font-bold uppercase tracking-widest">System Rule</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-24 px-10 bg-primary-container relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+</div>
+<div class="max-w-4xl mx-auto text-center relative z-10">
+<h2 class="text-[48px] font-bold text-white mb-6 leading-tight">Ready to transform your salon's digital experience?</h2>
+<p class="text-body-lg text-primary-fixed mb-10 max-w-xl mx-auto">Join 1,200+ luxury salons worldwide that trust Aura OS to power their business.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-white text-primary px-10 py-4 rounded-xl font-bold text-lg shadow-xl hover:scale-105 transition-all">Start 14-Day Free Trial</button>
+<button class="bg-primary text-white border border-white/20 px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">Contact Sales</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 bg-zinc-50 border-t border-gray-200 font-manrope text-sm">
+<div class="flex flex-col md:flex-row justify-between items-center px-10 max-w-[1440px] mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start">
+<div class="font-bold text-teal-900 mb-4">AURA SALON OS</div>
+<p class="text-gray-500 text-center md:text-left max-w-xs">© 2024 Aura Salon OS. Precision and luxury in beauty management.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-gray-500 hover:text-teal-700 transition-colors" href="#">Privacy</a>
+<a class="text-gray-500 hover:text-teal-700 transition-colors" href="#">Terms</a>
+<a class="text-gray-500 hover:text-teal-700 transition-colors" href="#">Support</a>
+<a class="text-gray-500 hover:text-teal-700 transition-colors" href="#">Careers</a>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary-fixed cursor-pointer transition-all">
+<span class="material-symbols-outlined text-primary text-sm">language</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary-fixed cursor-pointer transition-all">
+<span class="material-symbols-outlined text-primary text-sm">alternate_email</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
