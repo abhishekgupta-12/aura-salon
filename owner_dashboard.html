@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LuxeSalon | Owner Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#b4edec",
+                        "surface-main": "#FFFFFF",
+                        "on-tertiary-container": "#e3a585",
+                        "on-secondary-container": "#785a1a",
+                        "outline": "#707978",
+                        "on-surface-variant": "#404848",
+                        "surface-container-highest": "#e1e3e2",
+                        "warning": "#F59E0B",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#edeeed",
+                        "success": "#10B981",
+                        "tertiary-container": "#663a21",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#0d4d4d",
+                        "outline-variant": "#bfc8c8",
+                        "secondary-fixed": "#ffdea5",
+                        "error": "#EF4444",
+                        "secondary-container": "#fed488",
+                        "surface": "#f8faf9",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#85bdbc",
+                        "surface-dim": "#d9dad9",
+                        "on-primary": "#ffffff",
+                        "primary": "#003535",
+                        "surface-bright": "#f8faf9",
+                        "surface-muted": "#F9FAFB",
+                        "surface-container-high": "#e7e8e8",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#2e6767",
+                        "text-secondary": "#4B5563",
+                        "on-primary-fixed-variant": "#104f4f",
+                        "on-primary-fixed": "#002020",
+                        "tertiary-fixed": "#ffdbca",
+                        "inverse-surface": "#2e3131",
+                        "inverse-on-surface": "#f0f1f0",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1c",
+                        "surface-container-low": "#f2f4f3",
+                        "inverse-primary": "#98d1d0",
+                        "primary-fixed-dim": "#98d1d0",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-tertiary-fixed": "#331200",
+                        "surface-variant": "#e1e3e2",
+                        "on-tertiary-fixed-variant": "#683c22",
+                        "secondary-fixed-dim": "#e9c176",
+                        "tertiary": "#4b240d",
+                        "tertiary-fixed-dim": "#f9b897",
+                        "secondary": "#775a19",
+                        "on-secondary-fixed": "#261900",
+                        "on-background": "#191c1c",
+                        "border-subtle": "#E5E7EB",
+                        "background": "#f8faf9",
+                        "text-primary": "#111827"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sidebar-width": "260px",
+                        "container-margin": "24px",
+                        "gutter": "16px",
+                        "stack-xs": "4px",
+                        "base": "8px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h1": ["Manrope"],
+                        "display-xl": ["Manrope"],
+                        "h2": ["Manrope"],
+                        "body-sm": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-[260px] border-r border-slate-100 bg-white dark:bg-slate-900 shadow-[4px_0_12px_rgba(13,77,77,0.03)] flex flex-col py-6 font-['Manrope'] antialiased">
+<div class="px-6 mb-10">
+<h1 class="text-xl font-bold tracking-tight text-[#0D4D4D] dark:text-teal-400">LuxeSalon</h1>
+<p class="text-xs text-slate-400">Management Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-[#0D4D4D] dark:text-teal-300 bg-teal-50/50 dark:bg-teal-900/20 font-semibold border-r-4 border-[#0D4D4D] transition-all duration-200 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#0D4D4D] dark:hover:text-teal-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="text-sm">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#0D4D4D] dark:hover:text-teal-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="text-sm">Billing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#0D4D4D] dark:hover:text-teal-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-sm">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#0D4D4D] dark:hover:text-teal-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="text-sm">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#0D4D4D] dark:hover:text-teal-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-sm">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#0D4D4D] dark:hover:text-teal-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="text-sm">Marketing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#0D4D4D] dark:hover:text-teal-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-sm">Reports</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#0D4D4D] dark:hover:text-teal-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 ease-in-out rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-[260px] h-16 z-40 border-b border-slate-100 bg-white/80 backdrop-blur-md flex items-center justify-between px-8 shadow-sm">
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-full border border-slate-100 w-96 focus-within:ring-2 focus-within:ring-teal-500/20 transition-all">
+<span class="material-symbols-outlined text-slate-400 text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full font-body-sm" placeholder="Search clients, staff, or bookings..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-50 rounded-full p-2 transition-colors relative">
+<span class="material-symbols-outlined text-slate-500" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="hover:bg-slate-50 rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined text-slate-500" data-icon="help">help</span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="text-sm font-semibold text-primary">Julianne V.</p>
+<p class="text-[10px] text-slate-400 uppercase tracking-wider">Salon Owner</p>
+</div>
+<img alt="Owner Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm group-hover:border-teal-100 transition-all" data-alt="professional portrait of a confident salon owner woman with a modern hairstyle in a bright minimalist studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8qJUcu4FCeyeWmUqz9umguF8q0jdXVsbywc2FT9lPWFssFn_7Q3-J9jnzIT0V3-fKyAF1vFeRM7CAMZPlqAYjRSvJibGNkK8XWlHS3vcWqaKYDsxH_1UQAoAKCNdZP7ohsu_GmkfWpUo1zdcooMsRehFWnc3QZs_3MDSW7aPEWJ3cRwCnktmENbHDK8dgPt0chuoT7kfjCVG_KhH_Rj7fOK9EK1KVXZ_LoBqP9W78Lx8d6z8qcy6vvJOyUU5APBI8tHnrLS0d389q"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] pt-24 pb-12 px-8">
+<div class="max-w-7xl mx-auto">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-h1 text-h1 text-primary">Overview</h2>
+<p class="font-body-md text-text-secondary">Welcome back, Julianne. Here's what's happening today.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-white border border-border-subtle rounded-xl text-label-md font-label-md text-text-primary hover:bg-slate-50 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+                        Export Report
+                    </button>
+<button class="px-5 py-2 bg-primary-container text-on-primary-fixed-variant rounded-xl text-label-md font-label-md hover:opacity-90 shadow-sm transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="add">add</span>
+                        New Appointment
+                    </button>
+</div>
+</div>
+<!-- Bento Grid KPI Section -->
+<div class="grid grid-cols-4 gap-gutter mb-gutter">
+<!-- Daily Revenue -->
+<div class="col-span-1 bg-surface-main p-stack-lg rounded-xl shadow-[0_4px_12px_rgba(13,77,77,0.05)] border border-slate-50">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container" data-icon="payments">payments</span>
+</div>
+<span class="text-success text-label-sm font-label-sm bg-success/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+                            12.5%
+                        </span>
+</div>
+<p class="text-label-md font-label-md text-text-secondary mb-1">Daily Revenue</p>
+<h3 class="text-h2 font-h2 text-primary">$3,240.00</h3>
+<div class="mt-4 h-12 w-full flex items-end gap-1">
+<div class="bg-teal-100 w-full h-[40%] rounded-sm"></div>
+<div class="bg-teal-100 w-full h-[60%] rounded-sm"></div>
+<div class="bg-teal-100 w-full h-[55%] rounded-sm"></div>
+<div class="bg-teal-100 w-full h-[80%] rounded-sm"></div>
+<div class="bg-primary-container w-full h-[100%] rounded-sm"></div>
+</div>
+</div>
+<!-- Appointments Today -->
+<div class="col-span-1 bg-surface-main p-stack-lg rounded-xl shadow-[0_4px_12px_rgba(13,77,77,0.05)] border border-slate-50">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600" data-icon="calendar_today">calendar_today</span>
+</div>
+<span class="text-slate-400 text-label-sm font-label-sm">vs 22 avg</span>
+</div>
+<p class="text-label-md font-label-md text-text-secondary mb-1">Appointments</p>
+<h3 class="text-h2 font-h2 text-primary">28</h3>
+<p class="mt-2 text-label-sm text-text-secondary flex items-center gap-1">
+<span class="w-2 h-2 bg-success rounded-full"></span> 4 upcoming this hour
+                    </p>
+</div>
+<!-- New Clients -->
+<div class="col-span-1 bg-surface-main p-stack-lg rounded-xl shadow-[0_4px_12px_rgba(13,77,77,0.05)] border border-slate-50">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-amber-50 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-600" data-icon="person_add">person_add</span>
+</div>
+<span class="text-success text-label-sm font-label-sm bg-success/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+                            +4 today
+                        </span>
+</div>
+<p class="text-label-md font-label-md text-text-secondary mb-1">New Clients</p>
+<h3 class="text-h2 font-h2 text-primary">12</h3>
+<div class="mt-4 flex -space-x-2">
+<img alt="Client 1" class="w-7 h-7 rounded-full border-2 border-white" data-alt="young woman headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMyOYJdZI04OK7_5uWAf6c37U73U4f5wLu2nqVRM3ZoEYJsQEiHGU513l4dQ07luN4qg1ZD9fp5AOh7XFtO8Oyvmrp0yDxkAA2EmCMxV4QWiC2ThhfJtNFWg4PQn_By4hAxzQnfdh1zGD-tpcyrkdTquEZGDqfgYOWacAp8O5HEkBcdZSfmYuGCiVUoqJ52AWTybSBm7BAdWAme9hWxHwftDTs83AOv4uS8KMHVvG2u17PZ0t5Ju06wgpNr1ygv2Ek-kAkEpbtGPa-"/>
+<img alt="Client 2" class="w-7 h-7 rounded-full border-2 border-white" data-alt="young man headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu0mED0zs97MakqLOVFo5vpQYs7ll5ZCeKnqKRk5ozyloggKKzoI9yg_b13iSM6TPPwyI-edDsNUB_USH_TitMCtvAQwDwCTx3e6Y34b71wx6fkTyxMrthUUSPHVO6UguyR0bfITePUAsjA_5ifmBLYf7GwK3I_SoWXE87-Qz_UP9M-ohGW6hdsoRHTaYkSDQnag4kpF5mAe5aq_8Q73isBnFvwy-kHXDdvkz4FJBFOIg9b0E6k8E-BwSA_qOe8E5ChJTEvew17_B6"/>
+<img alt="Client 3" class="w-7 h-7 rounded-full border-2 border-white" data-alt="woman portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyv_rV474NePbgzPRQdVJcfbHAdEn1ktl3IOgp-b3i83kxoVTWZc-TWkUFKN-HRqj7pBZWA_XM60GnfzH7Gd89TbydUh12cdBv3irErruDdK9BVb7f0wORVgAS-snLaq3GUDz5PyAljFXWKvXdI12EEqKwyMutqYeLkAXIYyOmdI-iHG_nqEV8JbJxzPPaZMsC2xnomHPBdCwhj2gY6-SyzZb2Mn_m6dsG5UwYLX6mqrc8z6wXEczZ0XBfPGfhERyaZFUZCkwvbFTf"/>
+<div class="w-7 h-7 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">+9</div>
+</div>
+</div>
+<!-- Average Ticket -->
+<div class="col-span-1 bg-surface-main p-stack-lg rounded-xl shadow-[0_4px_12px_rgba(13,77,77,0.05)] border border-slate-50">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-purple-600" data-icon="confirmation_number">confirmation_number</span>
+</div>
+</div>
+<p class="text-label-md font-label-md text-text-secondary mb-1">Avg. Ticket</p>
+<h3 class="text-h2 font-h2 text-primary">$115.75</h3>
+<p class="mt-2 text-label-sm text-text-secondary">
+<span class="text-success font-semibold">↑ $12.50</span> from last week
+                    </p>
+</div>
+</div>
+<!-- Dashboard Layout Main Area -->
+<div class="grid grid-cols-3 gap-gutter">
+<!-- Revenue Growth Chart (Large) -->
+<div class="col-span-2 bg-surface-main p-stack-lg rounded-xl shadow-[0_4px_12px_rgba(13,77,77,0.05)] border border-slate-50">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="font-h3 text-h3 text-primary">Revenue Growth</h3>
+<p class="text-label-sm font-label-sm text-text-secondary">Weekly trend analysis</p>
+</div>
+<div class="flex bg-slate-100 p-1 rounded-lg">
+<button class="px-3 py-1 text-xs font-semibold bg-white rounded-md shadow-sm">Daily</button>
+<button class="px-3 py-1 text-xs font-semibold text-slate-500 hover:text-primary transition-colors">Weekly</button>
+<button class="px-3 py-1 text-xs font-semibold text-slate-500 hover:text-primary transition-colors">Monthly</button>
+</div>
+</div>
+<div class="relative h-[300px] w-full flex items-end justify-between px-2 pt-4">
+<!-- Y-Axis Mockup -->
+<div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-[10px] text-slate-400 pr-4 pointer-events-none">
+<span>$10k</span><span>$8k</span><span>$6k</span><span>$4k</span><span>$2k</span><span>0</span>
+</div>
+<!-- Grid Lines -->
+<div class="absolute inset-0 pl-10 flex flex-col justify-between pointer-events-none">
+<div class="w-full border-t border-slate-50"></div>
+<div class="w-full border-t border-slate-50"></div>
+<div class="w-full border-t border-slate-50"></div>
+<div class="w-full border-t border-slate-50"></div>
+<div class="w-full border-t border-slate-50"></div>
+<div class="w-full border-t border-slate-200"></div>
+</div>
+<!-- Bar Chart Elements -->
+<div class="flex-1 ml-10 flex items-end justify-around h-full relative z-10">
+<div class="group relative flex flex-col items-center gap-2 w-12">
+<div class="bg-primary-container/20 w-full h-[45%] rounded-t-lg transition-all group-hover:bg-primary-container/30"></div>
+<span class="text-[10px] font-semibold text-slate-400">MON</span>
+</div>
+<div class="group relative flex flex-col items-center gap-2 w-12">
+<div class="bg-primary-container/20 w-full h-[65%] rounded-t-lg transition-all group-hover:bg-primary-container/30"></div>
+<span class="text-[10px] font-semibold text-slate-400">TUE</span>
+</div>
+<div class="group relative flex flex-col items-center gap-2 w-12">
+<div class="bg-primary-container/20 w-full h-[55%] rounded-t-lg transition-all group-hover:bg-primary-container/30"></div>
+<span class="text-[10px] font-semibold text-slate-400">WED</span>
+</div>
+<div class="group relative flex flex-col items-center gap-2 w-12">
+<div class="bg-primary-container/20 w-full h-[85%] rounded-t-lg transition-all group-hover:bg-primary-container/30"></div>
+<span class="text-[10px] font-semibold text-slate-400">THU</span>
+</div>
+<div class="group relative flex flex-col items-center gap-2 w-12">
+<div class="bg-primary-container w-full h-[95%] rounded-t-lg transition-all">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$9,420</div>
+</div>
+<span class="text-[10px] font-bold text-primary">FRI</span>
+</div>
+<div class="group relative flex flex-col items-center gap-2 w-12">
+<div class="bg-primary-container/20 w-full h-[70%] rounded-t-lg transition-all group-hover:bg-primary-container/30"></div>
+<span class="text-[10px] font-semibold text-slate-400">SAT</span>
+</div>
+<div class="group relative flex flex-col items-center gap-2 w-12">
+<div class="bg-slate-100 w-full h-[10%] rounded-t-lg"></div>
+<span class="text-[10px] font-semibold text-slate-400">SUN</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Upcoming Appointments -->
+<div class="col-span-1 flex flex-col gap-gutter">
+<!-- Upcoming Appointments List -->
+<div class="bg-surface-main p-stack-lg rounded-xl shadow-[0_4px_12px_rgba(13,77,77,0.05)] border border-slate-50 flex-1">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-h3 text-h3 text-primary">Next Bookings</h3>
+<a class="text-label-sm font-label-sm text-primary-container hover:underline" href="#">View All</a>
+</div>
+<div class="space-y-4">
+<!-- Appointment 1 -->
+<div class="p-3 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-teal-50 flex flex-col items-center justify-center">
+<span class="text-[10px] font-bold text-primary-container leading-none uppercase">Now</span>
+<span class="text-sm font-extrabold text-primary-container">14:00</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-md text-label-md text-text-primary truncate">Elena Rodriguez</p>
+<p class="text-[11px] text-text-secondary truncate">Balayage &amp; Color Melt</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary-container transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Appointment 2 -->
+<div class="p-3 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-50 flex flex-col items-center justify-center">
+<span class="text-[10px] font-bold text-slate-400 leading-none uppercase">Soon</span>
+<span class="text-sm font-extrabold text-slate-600">14:45</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-md text-label-md text-text-primary truncate">Marcus Thorne</p>
+<p class="text-[11px] text-text-secondary truncate">Signature Cut &amp; Groom</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary-container transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Appointment 3 -->
+<div class="p-3 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-50 flex flex-col items-center justify-center">
+<span class="text-[10px] font-bold text-slate-400 leading-none uppercase">Later</span>
+<span class="text-sm font-extrabold text-slate-600">15:30</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-md text-label-md text-text-primary truncate">Sarah Jenkins</p>
+<p class="text-[11px] text-text-secondary truncate">Deep Conditioning</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary-container transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border-2 border-dashed border-slate-200 rounded-xl text-label-sm font-label-sm text-slate-400 hover:border-teal-200 hover:text-primary-container transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="add_circle">add_circle</span>
+                            Quick Book
+                        </button>
+</div>
+</div>
+</div>
+<!-- Campaign Performance Row -->
+<div class="mt-gutter">
+<div class="bg-surface-main p-stack-lg rounded-xl shadow-[0_4px_12px_rgba(13,77,77,0.05)] border border-slate-50">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-h3 text-h3 text-primary">Campaign Performance</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-slate-200"></div>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Ended</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8">
+<!-- Campaign 1 -->
+<div class="relative overflow-hidden bg-slate-50 p-5 rounded-2xl border border-slate-100 group">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<p class="text-[11px] font-bold text-primary-container uppercase tracking-tighter">SMS Marketing</p>
+<h4 class="font-label-md text-label-md text-primary">Spring Renewal 15%</h4>
+</div>
+<div class="p-2 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary-container" data-icon="sms">sms</span>
+</div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-h2 font-h2 text-primary">24.8%</p>
+<p class="text-[10px] text-slate-500">Conversion Rate</p>
+</div>
+<div class="text-right">
+<p class="text-label-sm font-label-sm text-success">+312 users</p>
+<p class="text-[10px] text-slate-500">Reach</p>
+</div>
+</div>
+<div class="mt-4 h-1 bg-slate-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[75%] rounded-full"></div>
+</div>
+</div>
+<!-- Campaign 2 -->
+<div class="relative overflow-hidden bg-slate-50 p-5 rounded-2xl border border-slate-100 group">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<p class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">Referral Program</p>
+<h4 class="font-label-md text-label-md text-primary">Share the Glow</h4>
+</div>
+<div class="p-2 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary-container" data-icon="share">share</span>
+</div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-h2 font-h2 text-primary">12.2%</p>
+<p class="text-[10px] text-slate-500">Conversion Rate</p>
+</div>
+<div class="text-right">
+<p class="text-label-sm font-label-sm text-success">+84 referrals</p>
+<p class="text-[10px] text-slate-500">Reach</p>
+</div>
+</div>
+<div class="mt-4 h-1 bg-slate-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[40%] rounded-full"></div>
+</div>
+</div>
+<!-- Campaign 3 -->
+<div class="relative overflow-hidden bg-teal-900 p-5 rounded-2xl shadow-lg group">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<p class="text-[11px] font-bold text-teal-300 uppercase tracking-tighter">Instagram Ads</p>
+<h4 class="font-label-md text-label-md text-white">Summer Luxe Essentials</h4>
+</div>
+<div class="p-2 bg-white/10 rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined text-teal-300" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-h2 font-h2 text-white">4.5%</p>
+<p class="text-[10px] text-teal-200/60">Conversion Rate</p>
+</div>
+<div class="text-right">
+<p class="text-label-sm font-label-sm text-teal-300">+2.4k clicks</p>
+<p class="text-[10px] text-teal-200/60">Reach</p>
+</div>
+</div>
+<div class="mt-4 h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-teal-300 w-[15%] rounded-full"></div>
+</div>
+<img alt="Campaign Banner" class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none" data-alt="abstract artistic background with soft light focusing on premium hair products in a luxury salon environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO5JWz6ZHrzykD87Hrsizn_zNyzXeMToyCirlkb8Y1L501IZPi6XNpLcV8EpTjod6ab5LA0w24aHszm-ksznQ79mNWjvyCRkScMoEvcR4OKqoU7hFDDyvfjJqkHBC0mN1JPg48bCiYNeTIPO_-NdohyzpzTc10eXhlXOj_yxfT7O5macPPYcBdxsVFs-4LjcO1eWooYyGDA1Nz4fvCDjfhQabAMJtjNXBF_36-k4fhdxp3GXSw2TBWVNOit6nZbRh203qkD-MVcLYv"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
