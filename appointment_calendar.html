@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LuxeSalon | Appointment Calendar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#b4edec",
+                      "surface-main": "#FFFFFF",
+                      "on-tertiary-container": "#e3a585",
+                      "on-secondary-container": "#785a1a",
+                      "outline": "#707978",
+                      "on-surface-variant": "#404848",
+                      "surface-container-highest": "#e1e3e2",
+                      "warning": "#F59E0B",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#edeeed",
+                      "success": "#10B981",
+                      "tertiary-container": "#663a21",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#0d4d4d",
+                      "outline-variant": "#bfc8c8",
+                      "secondary-fixed": "#ffdea5",
+                      "error": "#EF4444",
+                      "secondary-container": "#fed488",
+                      "surface": "#f8faf9",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-primary-container": "#85bdbc",
+                      "surface-dim": "#d9dad9",
+                      "on-primary": "#ffffff",
+                      "primary": "#003535",
+                      "surface-bright": "#f8faf9",
+                      "surface-muted": "#F9FAFB",
+                      "surface-container-high": "#e7e8e8",
+                      "on-error": "#ffffff",
+                      "surface-tint": "#2e6767",
+                      "text-secondary": "#4B5563",
+                      "on-primary-fixed-variant": "#104f4f",
+                      "on-primary-fixed": "#002020",
+                      "tertiary-fixed": "#ffdbca",
+                      "inverse-surface": "#2e3131",
+                      "inverse-on-surface": "#f0f1f0",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#191c1c",
+                      "surface-container-low": "#f2f4f3",
+                      "inverse-primary": "#98d1d0",
+                      "primary-fixed-dim": "#98d1d0",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "on-tertiary-fixed": "#331200",
+                      "surface-variant": "#e1e3e2",
+                      "on-tertiary-fixed-variant": "#683c22",
+                      "secondary-fixed-dim": "#e9c176",
+                      "tertiary": "#4b240d",
+                      "tertiary-fixed-dim": "#f9b897",
+                      "secondary": "#775a19",
+                      "on-secondary-fixed": "#261900",
+                      "on-background": "#191c1c",
+                      "border-subtle": "#E5E7EB",
+                      "background": "#f8faf9",
+                      "text-primary": "#111827"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sidebar-width": "260px",
+                      "container-margin": "24px",
+                      "gutter": "16px",
+                      "stack-xs": "4px",
+                      "base": "8px",
+                      "stack-sm": "8px",
+                      "stack-md": "16px",
+                      "stack-lg": "24px"
+              },
+              "fontFamily": {
+                      "h3": ["Manrope"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "h1": ["Manrope"],
+                      "display-xl": ["Manrope"],
+                      "h2": ["Manrope"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "h2": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 80px repeat(4, 1fr);
+            grid-auto-rows: 60px;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-[260px] border-r border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[4px_0_12px_rgba(13,77,77,0.03)] flex flex-col py-6 font-['Manrope'] z-50">
+<div class="px-6 mb-10">
+<h1 class="text-xl font-bold tracking-tight text-[#0D4D4D] dark:text-teal-400">LuxeSalon</h1>
+<p class="text-xs text-slate-400">Management Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#0D4D4D] transition-colors hover:bg-slate-50" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#0D4D4D] bg-teal-50/50 font-semibold border-r-4 border-[#0D4D4D] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-md">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#0D4D4D] transition-colors hover:bg-slate-50" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#0D4D4D] transition-colors hover:bg-slate-50" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-md">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#0D4D4D] transition-colors hover:bg-slate-50" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#0D4D4D] transition-colors hover:bg-slate-50" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md">Reports</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<div class="p-4 rounded-xl bg-primary-container text-on-primary-container">
+<p class="font-label-sm uppercase tracking-wider mb-2 opacity-80">PRO PLAN</p>
+<p class="font-body-sm font-medium mb-3">Maximize your salon's potential.</p>
+<button class="w-full py-2 bg-on-primary-container text-primary-container rounded-lg font-label-md text-sm">View Analytics</button>
+</div>
+</div>
+</aside>
+<!-- Top Navigation -->
+<header class="fixed top-0 right-0 left-[260px] h-16 bg-white/80 backdrop-blur-md border-b border-slate-100 z-40 px-8 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-6 flex-1">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-muted border-none rounded-full text-sm focus:ring-2 focus:ring-primary-container/20" placeholder="Search clients or services..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-50 rounded-full text-slate-500 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-100 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="font-label-md text-sm leading-none">Elena Russo</p>
+<p class="text-xs text-slate-400">Salon Owner</p>
+</div>
+<img alt="Owner Profile" class="w-10 h-10 rounded-full border-2 border-primary-fixed" data-alt="portrait of a professional woman with a warm smile in a modern bright salon setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI6_UUuH5mhKBSZFCtXRftOuAC0MFmI7n3-C9qaMMId1nMSAmHhyeqzde1hiH0zj6WLMw-wP-BZvF75w2eG0iTw-jMpMut66whoLN1E34L8MWOCbYxe0sNPGtuzF1H2IJUbtQxNpjoiN0N2Uf2tqH3aIz_FkbxxMpBqypIfOwvbV7lOwrZyNNIgToU_qE7_YVlmEJYaXSsEgUy0X1Sy6yD5TT7xKmJ1eXQMt5ncnq4E4KagrSN1y4Dt53ir0CeOUcj3fq_E_xVgwrf"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[260px] pt-16 min-h-screen bg-background">
+<!-- Dashboard Header -->
+<section class="p-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+<div>
+<h2 class="font-h1 text-primary">Appointment Calendar</h2>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-teal-600 text-lg" data-icon="today">today</span>
+<p class="text-slate-500 font-label-md">Monday, Oct 23 — Sunday, Oct 29</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center bg-white border border-slate-200 rounded-lg p-1 shadow-sm">
+<button class="p-2 hover:bg-slate-50 rounded text-slate-500">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="px-4 py-2 font-label-md text-sm border-x border-slate-100">Today</button>
+<button class="p-2 hover:bg-slate-50 rounded text-slate-500">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<button class="flex items-center gap-2 bg-primary px-6 py-2.5 rounded-lg text-white font-label-md shadow-md hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+                        New Booking
+                    </button>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="flex flex-wrap items-center gap-4 mb-8 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+<span class="font-label-md text-sm">Filters:</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-muted border border-slate-200 rounded-lg pl-3 pr-10 py-1.5 text-sm font-label-md focus:ring-primary-container/20 cursor-pointer">
+<option>All Staff Members</option>
+<option>Julian (Hair)</option>
+<option>Sarah (Nails)</option>
+<option>Marcus (Skin)</option>
+</select>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-muted border border-slate-200 rounded-lg pl-3 pr-10 py-1.5 text-sm font-label-md focus:ring-primary-container/20 cursor-pointer">
+<option>Service Category</option>
+<option>Hair Styling</option>
+<option>Skin Treatment</option>
+<option>Nail Care</option>
+</select>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-muted border border-slate-200 rounded-lg pl-3 pr-10 py-1.5 text-sm font-label-md focus:ring-primary-container/20 cursor-pointer">
+<option>Room Status</option>
+<option>Available</option>
+<option>Occupied</option>
+</select>
+</div>
+<div class="ml-auto flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-teal-500"></div>
+<span class="text-xs text-slate-500 font-label-md">Hair</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-amber-400"></div>
+<span class="text-xs text-slate-500 font-label-md">Skin</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-rose-400"></div>
+<span class="text-xs text-slate-500 font-label-md">Nails</span>
+</div>
+</div>
+</div>
+<!-- Calendar Container -->
+<div class="bg-white rounded-2xl border border-slate-100 shadow-xl overflow-hidden">
+<!-- Staff Header Row -->
+<div class="grid grid-cols-[80px_repeat(4,1fr)] border-b border-slate-100 bg-surface-muted/50">
+<div class="p-4 flex items-center justify-center border-r border-slate-100">
+<span class="material-symbols-outlined text-slate-400" data-icon="schedule">schedule</span>
+</div>
+<!-- Staff 1 -->
+<div class="p-4 flex items-center gap-3 border-r border-slate-100">
+<img alt="Julian Avatar" class="w-8 h-8 rounded-full" data-alt="headshot of a stylish male hair stylist with a modern haircut" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7qwR_L0NF8qyj04kXo72FAA-AzmXPYNxX3imayTA8irkpm8P_SkxnpBwlFjZzZVrGRkuQipbnatH6GU9x4ARgt89V47WX8fwHybHYtF-4qvd9oi1KxaYMW95zmO3TH1K7neTUkX-40DTarf5xEEkEwY3I83jd5qvgEKZoORMlXqeH7shFUMcDo2dFEEJ1w4wVB5TOsZunJhXqjmojssTuSflwY-58B90GCIVXkJo_bi-524fK2pRcest4XuP3hL2Gcs8_bCEfgmLp"/>
+<div>
+<p class="font-label-md text-sm">Julian M.</p>
+<p class="text-[10px] uppercase tracking-tighter text-teal-600 font-bold">Hair Expert</p>
+</div>
+</div>
+<!-- Staff 2 -->
+<div class="p-4 flex items-center gap-3 border-r border-slate-100">
+<img alt="Sarah Avatar" class="w-8 h-8 rounded-full" data-alt="headshot of a friendly professional woman, nail technician, in a salon uniform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPRyyAGNEYbUREoJn_-vhtLcBkbjxxVujURnGwRVo6LF3caMgtCLgC1Gewg-yqhU_gO-IQ-jkFQoNgudoPubEjpr1Ii0aMsmX1za52eCiMvU7G6AfmlZ8rxsOGeqO-nS0Lynxp_Rvf-iABMp8DjjAbS6f1b88ZH0X4MqpfiibYNbaU9R9WRjs4W1MyKax6PcG7vjrajfZR353shCBKABW0tC9FMM5vGAWPgO7mZE84OHBGhyLskujEwQXQJ0QUBU9CNQWIEpEizjF_"/>
+<div>
+<p class="font-label-md text-sm">Sarah K.</p>
+<p class="text-[10px] uppercase tracking-tighter text-rose-600 font-bold">Nails</p>
+</div>
+</div>
+<!-- Staff 3 -->
+<div class="p-4 flex items-center gap-3 border-r border-slate-100">
+<img alt="Marcus Avatar" class="w-8 h-8 rounded-full" data-alt="headshot of a groomed male professional, skin therapist, with a calm expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQL6n1Od5SB4x46YGT5rT5uaKPDNvkKfOi8NF_zd-1GECwqr1m2lOEUkv8ej0wLzs4GaEKFprnKx6oG6QEud9yf3gfPwBGZwhvK4cvr26W9q5wqmQKHOPmQWYLVOifUUIe_VFmyz_Zz6bYpUJVrmAxwmQMgKcf_Jt9A87xsFeHnUjcPMSpO9qkSTr1opYD6JIvb6gU6y0J6lMDHmo1_2WPPPH1mwJ1kP3UdbmJqu8NhekARMQ7gR06x4eNb3JF6jqOBdJk5RO-J2P9"/>
+<div>
+<p class="font-label-md text-sm">Marcus L.</p>
+<p class="text-[10px] uppercase tracking-tighter text-amber-600 font-bold">Skin Care</p>
+</div>
+</div>
+<!-- Staff 4 -->
+<div class="p-4 flex items-center gap-3">
+<img alt="Ava Avatar" class="w-8 h-8 rounded-full" data-alt="headshot of a creative female stylist with colored hair and professional makeup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgfdMm4GEXxkhhVGRxlQIsHOTAqUTqkRN_ld8eJgmJ7b-sb74QvQauWwMZJXDAtvQvQ98N8uLXtd5zvgeVFj9ADrJkEzRxzCQGg4fvUUZqVnSfm9Cbu0J9MOnx2xmmdVU04zy3XQ2Z6zPW_E_NR-1mdVq_NUi9MvtPkGpleDdLaYJgO0cYy7SrXUq3BScsRjQ0YQLjfB4jfEmOw5XKTX68NWZZOL5ZNerlKHW9OCecriScUduqIiu6MoBoqy5GYcay9pEyV3pWnxwN"/>
+<div>
+<p class="font-label-md text-sm">Ava Chen</p>
+<p class="text-[10px] uppercase tracking-tighter text-teal-600 font-bold">Stylist</p>
+</div>
+</div>
+</div>
+<!-- Calendar Content Grid -->
+<div class="calendar-grid bg-slate-50/20">
+<!-- 9:00 AM Row -->
+<div class="flex items-center justify-center text-xs text-slate-400 font-label-md border-r border-b border-slate-100 bg-white">09:00 AM</div>
+<!-- Appt 1 -->
+<div class="p-1 border-r border-b border-slate-100 relative group">
+<div class="h-full w-full bg-teal-50 border-l-4 border-teal-500 rounded-lg p-2 flex flex-col justify-center transition-all group-hover:shadow-md cursor-pointer">
+<p class="font-label-md text-xs text-teal-900 truncate">Isabella Scott</p>
+<p class="text-[10px] text-teal-700 opacity-80 truncate">Balayage Refresh</p>
+</div>
+</div>
+<!-- Empty -->
+<div class="border-r border-b border-slate-100 bg-white"></div>
+<!-- Appt 2 -->
+<div class="p-1 border-r border-b border-slate-100 relative">
+<div class="h-full w-full bg-amber-50 border-l-4 border-amber-500 rounded-lg p-2 flex flex-col justify-center">
+<p class="font-label-md text-xs text-amber-900 truncate">Oliver Grant</p>
+<p class="text-[10px] text-amber-700 opacity-80 truncate">HydraFacial</p>
+</div>
+</div>
+<!-- Empty -->
+<div class="border-b border-slate-100 bg-white"></div>
+<!-- 10:00 AM Row -->
+<div class="flex items-center justify-center text-xs text-slate-400 font-label-md border-r border-b border-slate-100 bg-white">10:00 AM</div>
+<!-- Continued Appt -->
+<div class="p-1 border-r border-b border-slate-100">
+<div class="h-full w-full bg-teal-50 border-l-4 border-teal-500 rounded-lg p-2 opacity-60"></div>
+</div>
+<!-- Appt 3 -->
+<div class="p-1 border-r border-b border-slate-100">
+<div class="h-full w-full bg-rose-50 border-l-4 border-rose-400 rounded-lg p-2 flex flex-col justify-center">
+<p class="font-label-md text-xs text-rose-900 truncate">Emma Wilson</p>
+<p class="text-[10px] text-rose-700 opacity-80 truncate">Gel Manicure</p>
+</div>
+</div>
+<!-- Empty -->
+<div class="border-r border-b border-slate-100 bg-white"></div>
+<!-- Appt 4 -->
+<div class="p-1 border-b border-slate-100">
+<div class="h-full w-full bg-teal-50 border-l-4 border-teal-500 rounded-lg p-2 flex flex-col justify-center">
+<p class="font-label-md text-xs text-teal-900 truncate">Liam Payne</p>
+<p class="text-[10px] text-teal-700 opacity-80 truncate">Mens Cut</p>
+</div>
+</div>
+<!-- 11:00 AM Row -->
+<div class="flex items-center justify-center text-xs text-slate-400 font-label-md border-r border-b border-slate-100 bg-white">11:00 AM</div>
+<!-- Appt 5 -->
+<div class="p-1 border-r border-b border-slate-100">
+<div class="h-full w-full bg-teal-50 border-l-4 border-teal-500 rounded-lg p-2 flex flex-col justify-center">
+<p class="font-label-md text-xs text-teal-900 truncate">Sophia Lopez</p>
+<p class="text-[10px] text-teal-700 opacity-80 truncate">Wash &amp; Blowout</p>
+</div>
+</div>
+<!-- Appt 6 -->
+<div class="p-1 border-r border-b border-slate-100">
+<div class="h-full w-full bg-rose-50 border-l-4 border-rose-400 rounded-lg p-2 flex flex-col justify-center">
+<p class="font-label-md text-xs text-rose-900 truncate">Mia Wang</p>
+<p class="text-[10px] text-rose-700 opacity-80 truncate">Pedicure Luxury</p>
+</div>
+</div>
+<!-- Appt 7 -->
+<div class="p-1 border-r border-b border-slate-100">
+<div class="h-full w-full bg-amber-50 border-l-4 border-amber-500 rounded-lg p-2 flex flex-col justify-center">
+<p class="font-label-md text-xs text-amber-900 truncate">James Bond</p>
+<p class="text-[10px] text-amber-700 opacity-80 truncate">Microdermabrasion</p>
+</div>
+</div>
+<!-- Empty -->
+<div class="border-b border-slate-100 bg-white"></div>
+<!-- 12:00 PM Row (Lunch Break) -->
+<div class="flex items-center justify-center text-xs text-slate-300 font-label-md border-r border-b border-slate-100 bg-slate-50/50 italic">12:00 PM</div>
+<div class="col-span-4 border-b border-slate-100 bg-slate-50/30 flex items-center justify-center">
+<span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Team Lunch Break</span>
+</div>
+<!-- 01:00 PM Row -->
+<div class="flex items-center justify-center text-xs text-slate-400 font-label-md border-r border-b border-slate-100 bg-white">01:00 PM</div>
+<div class="border-r border-b border-slate-100 bg-white"></div>
+<div class="p-1 border-r border-b border-slate-100">
+<div class="h-full w-full bg-rose-50 border-l-4 border-rose-400 rounded-lg p-2 flex flex-col justify-center">
+<p class="font-label-md text-xs text-rose-900 truncate">Chloe Birch</p>
+<p class="text-[10px] text-rose-700 opacity-80 truncate">Acrylic Set</p>
+</div>
+</div>
+<div class="border-r border-b border-slate-100 bg-white"></div>
+<div class="border-b border-slate-100 bg-white"></div>
+<!-- 02:00 PM Row -->
+<div class="flex items-center justify-center text-xs text-slate-400 font-label-md border-r border-b border-slate-100 bg-white">02:00 PM</div>
+<div class="p-1 border-r border-b border-slate-100">
+<div class="h-full w-full bg-teal-50 border-l-4 border-teal-500 rounded-lg p-2 flex flex-col justify-center">
+<p class="font-label-md text-xs text-teal-900 truncate">Noah Smith</p>
+<p class="text-[10px] text-teal-700 opacity-80 truncate">Toning Treatment</p>
+</div>
+</div>
+<div class="border-r border-b border-slate-100 bg-white"></div>
+<div class="p-1 border-r border-b border-slate-100">
+<div class="h-full w-full bg-amber-50 border-l-4 border-amber-500 rounded-lg p-2 flex flex-col justify-center">
+<p class="font-label-md text-xs text-amber-900 truncate">Grace Hopper</p>
+<p class="text-[10px] text-amber-700 opacity-80 truncate">Deep Cleansing</p>
+</div>
+</div>
+<div class="p-1 border-b border-slate-100">
+<div class="h-full w-full bg-teal-50 border-l-4 border-teal-500 rounded-lg p-2 flex flex-col justify-center">
+<p class="font-label-md text-xs text-teal-900 truncate">Lily Evans</p>
+<p class="text-[10px] text-teal-700 opacity-80 truncate">Curtain Bangs</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Dashboard Quick Insights (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
+<div class="col-span-1 md:col-span-2 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-h3 text-primary">Daily Revenue</h3>
+<span class="text-success flex items-center text-xs font-bold">+12% vs last Mon</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-display-xl">$1,420.00</span>
+<span class="text-slate-400 text-sm font-label-md">/ Oct 23</span>
+</div>
+</div>
+<div class="mt-6 flex gap-2">
+<div class="h-2 flex-1 bg-teal-500 rounded-full"></div>
+<div class="h-2 w-1/3 bg-rose-400 rounded-full"></div>
+<div class="h-2 w-1/4 bg-amber-400 rounded-full"></div>
+</div>
+</div>
+<div class="bg-[#0D4D4D] p-6 rounded-2xl shadow-xl flex flex-col justify-center text-white relative overflow-hidden">
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-white/5 text-8xl" data-icon="auto_awesome">auto_awesome</span>
+<p class="font-label-sm uppercase tracking-widest opacity-60 mb-1">Capacity</p>
+<p class="text-3xl font-display-xl mb-2">84%</p>
+<p class="text-sm font-body-sm opacity-80">Only 3 slots remaining for today's afternoon session.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-center">
+<p class="font-label-sm uppercase tracking-widest text-slate-400 mb-1">Cancellations</p>
+<p class="text-3xl font-display-xl text-error mb-2">2</p>
+<div class="flex items-center gap-1 text-slate-500 text-xs font-label-md">
+<span class="material-symbols-outlined text-sm" data-icon="history">history</span>
+                        Updated 5m ago
+                    </div>
+</div>
+</div>
+</section>
+</main>
+<!-- Mobile Nav Anchor (Visible only on small screens) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white border-t border-slate-100 flex items-center justify-around z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="calendar_month" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="text-[10px] font-bold">Schedule</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-[10px] font-medium">Clients</span>
+</button>
+<div class="relative -top-4">
+<button class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-[10px] font-medium">Stock</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px] font-medium">Admin</span>
+</button>
+</nav>
+</body></html>

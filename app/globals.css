@@ -1,26 +1,189 @@
 @import "tailwindcss";
 
+/* ─── LIGHT MODE TOKENS ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: 173 100% 10%;
+  --primary-container: 180 74% 18%;
+  --primary-fixed: 177 64% 82%;
+  --primary-fixed-dim: 178 38% 71%;
+  --on-primary: 0 0% 100%;
+  --on-primary-container: 178 25% 63%;
+  --on-primary-fixed-variant: 180 67% 19%;
+
+  --secondary: 39 68% 28%;
+  --secondary-container: 38 98% 76%;
+  --secondary-fixed: 38 100% 82%;
+  --on-secondary: 0 0% 100%;
+  --on-secondary-container: 38 64% 28%;
+
+  --tertiary: 20 72% 17%;
+  --tertiary-container: 20 52% 27%;
+  --tertiary-fixed: 20 100% 89%;
+
+  --background: 150 14% 97%;
+  --surface: 0 0% 100%;
+  --surface-muted: 210 20% 98%;
+  --surface-dim: 150 3% 85%;
+  --surface-container: 150 4% 93%;
+  --surface-container-low: 140 7% 95%;
+  --surface-container-high: 150 3% 91%;
+
+  --on-surface: 180 8% 10%;
+  --on-background: 180 8% 10%;
+  --text-primary: 220 14% 11%;
+  --text-secondary: 220 9% 34%;
+
+  --border-subtle: 220 13% 91%;
+  --outline: 170 4% 47%;
+  --outline-variant: 180 8% 77%;
+
+  --success: 160 72% 40%;
+  --warning: 38 92% 50%;
+  --error: 0 84% 60%;
+  --error-container: 0 100% 92%;
+
+  --sidebar-bg: 0 0% 100%;
+  --sidebar-border: 210 17% 95%;
+  --sidebar-active: 180 74% 18%;
+
+  --chart-1: 180 74% 18%;
+  --chart-2: 180 38% 29%;
+  --chart-3: 39 68% 28%;
+  --chart-4: 160 72% 40%;
+  --chart-5: 38 92% 50%;
+
+  --radius: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+
+  --sidebar-width: 260px;
 }
 
+/* ─── DARK MODE TOKENS ─── */
+.dark {
+  --primary: 178 25% 71%;
+  --primary-container: 180 67% 19%;
+  --primary-fixed: 177 64% 82%;
+  --on-primary: 173 100% 10%;
+  --on-primary-container: 177 64% 82%;
+
+  --secondary: 38 64% 56%;
+  --secondary-container: 38 92% 26%;
+  --on-secondary: 38 100% 8%;
+
+  --background: 168 18% 6%;
+  --surface: 165 12% 11%;
+  --surface-muted: 164 10% 13%;
+  --surface-dim: 165 5% 15%;
+  --surface-container: 165 8% 14%;
+  --surface-container-low: 165 10% 12%;
+  --surface-container-high: 165 6% 17%;
+
+  --on-surface: 150 3% 89%;
+  --on-background: 150 3% 89%;
+  --text-primary: 220 10% 95%;
+  --text-secondary: 220 5% 64%;
+
+  --border-subtle: 220 10% 24%;
+  --outline: 170 4% 55%;
+  --outline-variant: 180 6% 32%;
+
+  --sidebar-bg: 168 18% 6%;
+  --sidebar-border: 165 10% 13%;
+  --sidebar-active: 178 25% 71%;
+
+  --chart-1: 178 38% 45%;
+  --chart-2: 178 25% 60%;
+  --chart-3: 38 64% 56%;
+  --chart-4: 160 60% 45%;
+  --chart-5: 38 80% 55%;
+}
+
+/* ─── TAILWIND v4 THEME ─── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: hsl(var(--primary));
+  --color-primary-container: hsl(var(--primary-container));
+  --color-primary-fixed: hsl(var(--primary-fixed));
+  --color-primary-fixed-dim: hsl(var(--primary-fixed-dim));
+  --color-on-primary: hsl(var(--on-primary));
+  --color-on-primary-container: hsl(var(--on-primary-container));
+  --color-on-primary-fixed-variant: hsl(var(--on-primary-fixed-variant));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-container: hsl(var(--secondary-container));
+  --color-secondary-fixed: hsl(var(--secondary-fixed));
+  --color-on-secondary: hsl(var(--on-secondary));
+  --color-on-secondary-container: hsl(var(--on-secondary-container));
+
+  --color-tertiary: hsl(var(--tertiary));
+  --color-tertiary-container: hsl(var(--tertiary-container));
+  --color-tertiary-fixed: hsl(var(--tertiary-fixed));
+
+  --color-background: hsl(var(--background));
+  --color-surface: hsl(var(--surface));
+  --color-surface-muted: hsl(var(--surface-muted));
+  --color-surface-dim: hsl(var(--surface-dim));
+  --color-surface-container: hsl(var(--surface-container));
+  --color-surface-container-low: hsl(var(--surface-container-low));
+  --color-surface-container-high: hsl(var(--surface-container-high));
+
+  --color-on-surface: hsl(var(--on-surface));
+  --color-on-background: hsl(var(--on-background));
+  --color-text-primary: hsl(var(--text-primary));
+  --color-text-secondary: hsl(var(--text-secondary));
+
+  --color-border-subtle: hsl(var(--border-subtle));
+  --color-outline: hsl(var(--outline));
+  --color-outline-variant: hsl(var(--outline-variant));
+
+  --color-success: hsl(var(--success));
+  --color-warning: hsl(var(--warning));
+  --color-error: hsl(var(--error));
+  --color-error-container: hsl(var(--error-container));
+
+  --color-sidebar-bg: hsl(var(--sidebar-bg));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-active: hsl(var(--sidebar-active));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --font-heading: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── BASE STYLES ─── */
+* {
+  border-color: hsl(var(--border-subtle));
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--on-surface));
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── SCROLLBAR ─── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--border-subtle));
+  border-radius: 10px;
+}
+
+/* ─── TONAL SHADOWS ─── */
+.tonal-shadow {
+  box-shadow: 0px 4px 12px hsla(180, 74%, 18%, 0.05);
+}
+.tonal-shadow-lg {
+  box-shadow: 0px 10px 25px hsla(180, 74%, 18%, 0.1);
 }

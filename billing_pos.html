@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#b4edec",
+                    "surface-main": "#FFFFFF",
+                    "on-tertiary-container": "#e3a585",
+                    "on-secondary-container": "#785a1a",
+                    "outline": "#707978",
+                    "on-surface-variant": "#404848",
+                    "surface-container-highest": "#e1e3e2",
+                    "warning": "#F59E0B",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#edeeed",
+                    "success": "#10B981",
+                    "tertiary-container": "#663a21",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#0d4d4d",
+                    "outline-variant": "#bfc8c8",
+                    "secondary-fixed": "#ffdea5",
+                    "error": "#EF4444",
+                    "secondary-container": "#fed488",
+                    "surface": "#f8faf9",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#85bdbc",
+                    "surface-dim": "#d9dad9",
+                    "on-primary": "#ffffff",
+                    "primary": "#003535",
+                    "surface-bright": "#f8faf9",
+                    "surface-muted": "#F9FAFB",
+                    "surface-container-high": "#e7e8e8",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#2e6767",
+                    "text-secondary": "#4B5563",
+                    "on-primary-fixed-variant": "#104f4f",
+                    "on-primary-fixed": "#002020",
+                    "tertiary-fixed": "#ffdbca",
+                    "inverse-surface": "#2e3131",
+                    "inverse-on-surface": "#f0f1f0",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1c",
+                    "surface-container-low": "#f2f4f3",
+                    "inverse-primary": "#98d1d0",
+                    "primary-fixed-dim": "#98d1d0",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "on-tertiary-fixed": "#331200",
+                    "surface-variant": "#e1e3e2",
+                    "on-tertiary-fixed-variant": "#683c22",
+                    "secondary-fixed-dim": "#e9c176",
+                    "tertiary": "#4b240d",
+                    "tertiary-fixed-dim": "#f9b897",
+                    "secondary": "#775a19",
+                    "on-secondary-fixed": "#261900",
+                    "on-background": "#191c1c",
+                    "border-subtle": "#E5E7EB",
+                    "background": "#f8faf9",
+                    "text-primary": "#111827"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar-width": "260px",
+                    "container-margin": "24px",
+                    "gutter": "16px",
+                    "stack-xs": "4px",
+                    "base": "8px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px"
+            },
+            "fontFamily": {
+                    "h3": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "h1": ["Manrope"],
+                    "display-xl": ["Manrope"],
+                    "h2": ["Manrope"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "h2": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        .active-tab-border {
+            position: relative;
+        }
+        .active-tab-border::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #0d4d4d;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="fixed left-0 top-0 h-full w-[260px] border-r border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[4px_0_12px_rgba(13,77,77,0.03)] flex flex-col py-6 z-50">
+<div class="px-6 mb-8">
+<h1 class="text-xl font-bold tracking-tight text-[#0D4D4D] dark:text-teal-400 font-h3">LuxeSalon</h1>
+<p class="text-xs text-slate-500 font-label-sm">Management Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 hover:text-[#0D4D4D] transition-all duration-200 ease-in-out hover:translate-x-1 font-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 hover:text-[#0D4D4D] transition-all duration-200 ease-in-out hover:translate-x-1 font-label-md" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                Appointments
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#0D4D4D] bg-teal-50/50 font-semibold border-r-4 border-[#0D4D4D] transition-all duration-200 ease-in-out hover:translate-x-1 font-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+                Billing
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 hover:text-[#0D4D4D] transition-all duration-200 ease-in-out hover:translate-x-1 font-label-md" href="#">
+<span class="material-symbols-outlined">group</span>
+                Customers
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 hover:text-[#0D4D4D] transition-all duration-200 ease-in-out hover:translate-x-1 font-label-md" href="#">
+<span class="material-symbols-outlined">badge</span>
+                Staff
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 hover:text-[#0D4D4D] transition-all duration-200 ease-in-out hover:translate-x-1 font-label-md" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Inventory
+            </a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="flex items-center gap-3 p-3 bg-surface-muted rounded-xl">
+<img alt="Owner Profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="professional portrait of a high-end salon manager in a well-lit modern studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSIClTnOLLnhiFx-cLRKFhwf4LnzwsFQa1-flCZWhYIBP2Uz2S2SKWqBz12okPck9dJQCLNVXd1P9H416JaigcC3Smuh84qdT6qVlMNmXNfgw6m5lQ1wVsyC2mpeLjzy0zI7zj4syiITIhyY8H7X3OQpmBgBWjIG1nfV73xHPh0LcpEFHnXXTcjGFnHfNmzEB3hhgEzv27MqnNmHe2Y-wcIP8DPEJeO8p_aiDSgGNE1d9b7XZmQ6axgc5flaEweDrEhWVM2nW2-Nat"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold text-primary truncate">Elena Rossi</p>
+<p class="text-[10px] text-text-secondary uppercase tracking-wider font-semibold">Salon Owner</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 left-[260px] h-16 bg-white/80 backdrop-blur-md border-b border-slate-100 z-40 flex items-center justify-between px-8">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-muted border-none rounded-full text-sm focus:ring-2 focus:ring-primary-container/20 font-body-sm" placeholder="Search catalog or customer..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-slate-500">Terminal 01</span>
+<span class="w-2 h-2 bg-success rounded-full"></span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[260px] pt-16 h-screen flex overflow-hidden">
+<!-- Left Side: Active Cart / Bill -->
+<section class="w-5/12 h-full flex flex-col border-r border-slate-100 bg-white">
+<div class="p-6 border-b border-slate-50">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-h2 text-primary">Current Bill</h2>
+<span class="text-xs font-semibold text-text-secondary bg-surface-muted px-3 py-1 rounded-full">ID: #4920</span>
+</div>
+<!-- Customer Context -->
+<div class="flex items-center gap-4 p-3 bg-primary/5 rounded-xl border border-primary/10">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">
+                        SM
+                    </div>
+<div class="flex-1">
+<p class="text-sm font-bold text-primary">Sophia Martinez</p>
+<p class="text-xs text-text-secondary">Loyalty Member • 240 pts</p>
+</div>
+<button class="text-primary hover:bg-white p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</div>
+<!-- Cart Items -->
+<div class="flex-1 overflow-y-auto p-6 custom-scrollbar space-y-4">
+<!-- Item 1: Service -->
+<div class="flex items-start gap-4 p-4 rounded-xl border border-slate-100 hover:border-primary-fixed transition-colors">
+<div class="p-2 bg-secondary-container/20 rounded-lg text-secondary">
+<span class="material-symbols-outlined">content_cut</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<h4 class="text-sm font-bold text-primary">Signature Balayage</h4>
+<p class="text-sm font-bold text-primary">$185.00</p>
+</div>
+<p class="text-xs text-text-secondary mb-3">Service by: Marcus J.</p>
+<div class="flex items-center gap-3">
+<div class="flex items-center bg-surface-muted rounded-lg border border-slate-100">
+<button class="px-2 py-1 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="px-2 text-xs font-bold w-6 text-center">1</span>
+<button class="px-2 py-1 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+<button class="text-error text-xs font-medium hover:underline">Remove</button>
+</div>
+</div>
+</div>
+<!-- Item 2: Product -->
+<div class="flex items-start gap-4 p-4 rounded-xl border border-slate-100 hover:border-primary-fixed transition-colors">
+<div class="p-2 bg-tertiary-fixed/40 rounded-lg text-tertiary">
+<span class="material-symbols-outlined">sanitizer</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<h4 class="text-sm font-bold text-primary">Olaplex No. 3 Repair</h4>
+<p class="text-sm font-bold text-primary">$56.00</p>
+</div>
+<p class="text-xs text-text-secondary mb-3">Retail Product • 250ml</p>
+<div class="flex items-center gap-3">
+<div class="flex items-center bg-surface-muted rounded-lg border border-slate-100">
+<button class="px-2 py-1 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="px-2 text-xs font-bold w-6 text-center">2</span>
+<button class="px-2 py-1 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+<button class="text-error text-xs font-medium hover:underline">Remove</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Checkout Footer -->
+<div class="p-6 bg-surface-muted/50 border-t border-slate-100">
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-sm">
+<span class="text-text-secondary">Subtotal</span>
+<span class="font-medium text-primary">$241.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-text-secondary">Tax (8%)</span>
+<span class="font-medium text-primary">$19.28</span>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<div class="relative flex-1">
+<input class="w-full text-xs py-2 px-3 border border-slate-200 rounded-lg focus:ring-primary focus:border-primary" placeholder="Promo code" type="text"/>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-primary-container transition-colors">Apply</button>
+</div>
+<div class="flex justify-between pt-4 border-t border-slate-200">
+<span class="text-lg font-bold text-primary">Total Amount</span>
+<span class="text-lg font-extrabold text-primary">$260.28</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3 mb-6">
+<button class="flex flex-col items-center gap-1 p-3 border-2 border-primary bg-primary/5 rounded-xl transition-all">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+<span class="text-[10px] font-bold text-primary uppercase">Card</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-3 border border-slate-200 bg-white rounded-xl hover:border-primary-fixed transition-all">
+<span class="material-symbols-outlined text-slate-400">payments</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase">Cash</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-3 border border-slate-200 bg-white rounded-xl hover:border-primary-fixed transition-all">
+<span class="material-symbols-outlined text-slate-400">account_balance_wallet</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase">Digital</span>
+</button>
+</div>
+<button class="w-full bg-primary text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 shadow-lg shadow-primary/20 hover:bg-primary-container transition-all hover:scale-[1.02] active:scale-95">
+                    Process Checkout
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Right Side: Searchable Catalog -->
+<section class="w-7/12 h-full flex flex-col bg-background">
+<div class="p-8">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-h2 text-primary">Service Catalog</h2>
+<div class="flex gap-2">
+<button class="p-2 bg-white border border-slate-200 rounded-lg text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">tune</span>
+</button>
+<button class="p-2 bg-white border border-slate-200 rounded-lg text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex gap-8 border-b border-slate-200 mb-8">
+<button class="pb-3 text-sm font-bold text-primary active-tab-border">All Services</button>
+<button class="pb-3 text-sm font-medium text-text-secondary hover:text-primary transition-colors">Retail Products</button>
+<button class="pb-3 text-sm font-medium text-text-secondary hover:text-primary transition-colors">Gift Cards</button>
+<button class="pb-3 text-sm font-medium text-text-secondary hover:text-primary transition-colors">Packages</button>
+</div>
+<!-- Bento Grid of Items -->
+<div class="grid grid-cols-3 gap-6 overflow-y-auto max-h-[calc(100vh-280px)] pr-2 custom-scrollbar">
+<!-- Catalog Item 1 -->
+<div class="bg-white p-5 rounded-2xl border border-transparent hover:border-primary-fixed hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer">
+<div class="w-full h-32 mb-4 rounded-xl overflow-hidden relative">
+<img alt="Hair Service" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="close-up of a professional hair coloring session with vibrant highlights in a luxury salon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6iZTmhrNjCxDk3mO8My-Jb8H13ik99_fmrKnExrpzWX6upjnB7VSTU70jVAmUT3VP7hXcZyxFmu3d0rtzMGwLyrkftEbsVV9r0U96zZ7ZQyeFx_9Lz0zgfxUvpox1RdR6iMeEvvVjhkmweV88h3ajZh-zmKG5ROc98YhQME5KdiFe2jarA0Ch-8NJkB8JLG2eppH55OIZOZv3tIkzZS4vfcwEkpO3lyEcnIw2-hN8mgGg6OarWXYdWbT4phehA9oFcYiUK2ck50CS"/>
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-[10px] font-bold text-primary">BESTSELLER</div>
+</div>
+<h3 class="text-sm font-bold text-primary mb-1">Color &amp; Cut</h3>
+<p class="text-xs text-text-secondary mb-4">90 min • Stylist Tier 2</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-extrabold text-primary">$120.00</span>
+<button class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Catalog Item 2 -->
+<div class="bg-white p-5 rounded-2xl border border-transparent hover:border-primary-fixed hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer">
+<div class="w-full h-32 mb-4 rounded-xl overflow-hidden relative">
+<img alt="Retail Product" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="high-quality organic hair care products arranged on a minimalist white shelf with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo3-3ddRvePHp8jBC1maxWsoNiHXwhs95P4bnmw96qwdbq8QPtw6SvxMuzSjCKhzvKseCjBsNceeJ0DYUQ7iu4srR5yeVKICNic_WqmglkwRd8k07Zhu16w0Xt6vfRTPV-37thwQZ3Y0ypjvsoKf95XFHhheNWYwjeuT1cWBYNNeS6gN77OtlKcPPuIfix5W5l1ZyZrE8aG1LqotB01Ps_5QzJN0eNaRsFg8yS7znC1uqPD77Jk5lSOy-TQh0CPOurwk5b-9kmJE82"/>
+</div>
+<h3 class="text-sm font-bold text-primary mb-1">Silk Shine Oil</h3>
+<p class="text-xs text-text-secondary mb-4">100ml Retail • In Stock</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-extrabold text-primary">$45.00</span>
+<button class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Catalog Item 3 -->
+<div class="bg-white p-5 rounded-2xl border border-transparent hover:border-primary-fixed hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer">
+<div class="w-full h-32 mb-4 rounded-xl overflow-hidden relative">
+<img alt="Facial Service" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="professional makeup artist applying luxury cosmetics with high-end brushes in a bright studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlnCoRvOOeuNdKmT_RavZ9Q7JG81NOUylRIKOvFxPQOAEYH8av3XxXOqewtUBHv-Wdx9RzeT_HP-794-ZG4T9r9M7PbxUUvwvZ_m3nJJ3_Y7uqgkmIvNp0xGJevuQX94o02TBLVala0dKFDUfFdKqs6J6Cx25jyYC3GhNe0-pBNt-4ErQO7rUtqKAJ7zBg_-LSxR6YnrAEGIegnQdU9k9lWe6MiDJW6pqrxdb1N2-noqLqwi--nAeB3onBbuLwemvWuDqZpBwJlVGg"/>
+</div>
+<h3 class="text-sm font-bold text-primary mb-1">HydraFacial Pro</h3>
+<p class="text-xs text-text-secondary mb-4">60 min • Esthetician</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-extrabold text-primary">$155.00</span>
+<button class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Catalog Item 4 -->
+<div class="bg-white p-5 rounded-2xl border border-transparent hover:border-primary-fixed hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer">
+<div class="w-full h-32 mb-4 rounded-xl overflow-hidden relative">
+<img alt="Nail Service" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="macro shot of a luxury manicure with gold accents on clean manicured nails" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0_ZXAJDJbIWPUhYv9CatJkTF4--ULRADQUvBRJzXrsEGyczvhxggpzvaS-JY1UvALu_lqE9DGutihlubS73aOUuqq5eALU01MMgaEYVSFDKtRXGAFPsBsDuiuyYgh8pyPY3wdb4MLgIwnCkHuZ3gP6knO_GWFPYS4sRxmDjg3dWQ5RaraVv2QOc3slit8g9pbF7wxdU4uYjqfZS8ijs5Q9ds-GJ91hFJOg1Wo4xOx5R6V-Q7Z7fWP-Q67uH_ywVMm_q7LKYaAlyJD"/>
+</div>
+<h3 class="text-sm font-bold text-primary mb-1">Gel Manicure</h3>
+<p class="text-xs text-text-secondary mb-4">45 min • Junior Artist</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-extrabold text-primary">$65.00</span>
+<button class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Catalog Item 5 -->
+<div class="bg-white p-5 rounded-2xl border border-transparent hover:border-primary-fixed hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer">
+<div class="w-full h-32 mb-4 rounded-xl overflow-hidden relative text-center flex flex-col items-center justify-center bg-teal-50">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">card_giftcard</span>
+</div>
+<h3 class="text-sm font-bold text-primary mb-1">Salon Gift Card</h3>
+<p class="text-xs text-text-secondary mb-4">Custom Value • No Expiry</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-extrabold text-primary">Any</span>
+<button class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Catalog Item 6 -->
+<div class="bg-white p-5 rounded-2xl border border-transparent hover:border-primary-fixed hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer">
+<div class="w-full h-32 mb-4 rounded-xl overflow-hidden relative">
+<img alt="Men Service" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="artistic display of professional scissors and combs on a dark textured surface with professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiBghBQRh8jkPKvXzn89l-VZA29aeJ5g6UmtdYWxrci8cXmT_fYxBMF0wX2WLGqXtvOCBz8wv_WWUn4ppxSOfRI4oPVd4XHvHPuv5FVzAvngJ_VTmub_yd5aEI_9MZfRhNRpJJogVeL57z3cETajI7h8IEJlrGFwYCsrweNV0xkJbKxxSDXLHw-nxCbXdSWRE-bB6D4KlEpF38H3IsLkIyRlCp_EsvMTuAZf9b1oVSV10VTZi1bji89inOsMp-zGhuYG5Bxo55j7H6"/>
+</div>
+<h3 class="text-sm font-bold text-primary mb-1">Executive Cut</h3>
+<p class="text-xs text-text-secondary mb-4">30 min • Barber Pro</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-extrabold text-primary">$55.00</span>
+<button class="w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Catalog Footer / Quick Actions -->
+<div class="mt-8 flex items-center gap-4">
+<button class="flex-1 py-3 px-4 bg-white border border-slate-200 rounded-xl flex items-center justify-center gap-2 text-sm font-bold text-primary hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-sm">qr_code_scanner</span>
+                        Scan Barcode
+                    </button>
+<button class="flex-1 py-3 px-4 bg-white border border-slate-200 rounded-xl flex items-center justify-center gap-2 text-sm font-bold text-primary hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                        Walk-in Client
+                    </button>
+<button class="flex-1 py-3 px-4 bg-white border border-slate-200 rounded-xl flex items-center justify-center gap-2 text-sm font-bold text-primary hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-sm">history</span>
+                        Recent Items
+                    </button>
+</div>
+</div>
+</section>
+</main>
+</body></html>
