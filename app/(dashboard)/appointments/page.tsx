@@ -1,14 +1,39 @@
 import { PageHeader } from "@/components/shared/page-header";
-import { Plus } from "lucide-react";
+import { AppointmentClient } from "./appointment-client";
+import { db } from "@/lib/db";
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export const metadata = { title: "Appointments" };
 
-export default function AppointmentsPage() {
+export default async function AppointmentsPage() {
+  const session = await auth();
+  const salonId = (session?.user as any)?.salonId;
+
+  if (!salonId) {
+    redirect("/login");
+  }
+
+  const [appointments, customers, staff, services] = await Promise.all([
+    db.appointment.findMany({
+      where: { salonId },
+      include: { customer: true, staff: true },
+      orderBy: { startTime: "asc" },
+    }),
+    db.customer.findMany({ where: { salonId } }),
+    db.staff.findMany({ where: { salonId, isActive: true } }),
+    db.service.findMany({ where: { salonId, isActive: true } })
+  ]);
+
   return (
-    <PageHeader title="Appointment Calendar" description="Manage bookings, walk-ins, and scheduling.">
-      <button className="px-5 py-2 bg-primary-container text-on-primary rounded-xl text-sm font-medium hover:opacity-90 shadow-sm transition-all flex items-center gap-2">
-        <Plus className="h-4 w-4" /> New Booking
-      </button>
-    </PageHeader>
+    <>
+      <PageHeader title="Appointment Calendar" description="Manage bookings, walk-ins, and scheduling." />
+      <AppointmentClient 
+        initialData={appointments} 
+        customers={customers} 
+        staff={staff} 
+        services={services} 
+      />
+    </>
   );
 }
