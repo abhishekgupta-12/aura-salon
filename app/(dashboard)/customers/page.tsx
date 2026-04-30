@@ -1,14 +1,28 @@
 import { PageHeader } from "@/components/shared/page-header";
-import { Plus } from "lucide-react";
+import { CustomerClient } from "./customer-client";
+import { db } from "@/lib/db";
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export const metadata = { title: "Customers" };
 
-export default function CustomersPage() {
+export default async function CustomersPage() {
+  const session = await auth();
+  const salonId = (session?.user as any)?.salonId;
+
+  if (!salonId) {
+    redirect("/login");
+  }
+
+  const customers = await db.customer.findMany({
+    where: { salonId },
+    orderBy: { createdAt: "desc" },
+  });
+
   return (
-    <PageHeader title="Customer Management" description="Review and manage your active clients.">
-      <button className="px-5 py-2 bg-primary-container text-on-primary rounded-xl text-sm font-medium hover:opacity-90 shadow-sm transition-all flex items-center gap-2">
-        <Plus className="h-4 w-4" /> New Customer
-      </button>
-    </PageHeader>
+    <>
+      <PageHeader title="Customer Management" description="Review and manage your active clients." />
+      <CustomerClient initialData={customers} />
+    </>
   );
 }
